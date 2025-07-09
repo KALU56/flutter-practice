@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'quiz_page.dart';
+import 'screens/welcome_screen.dart';
 
-void main() {
-  runApp(const QuizApp());
-}
+void main() => runApp(const QuizApp());
 
 class QuizApp extends StatelessWidget {
   const QuizApp({super.key});
@@ -11,9 +9,10 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Quiz App',
       debugShowCheckedModeBanner: false,
-      home: QuizPage(),
+      title: 'Quiz App',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: WelcomeScreen(),
     );
   }
 }

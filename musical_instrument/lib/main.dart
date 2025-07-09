@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(const PianoApp());
@@ -28,21 +29,57 @@ class PianoKeys extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // White keys - bottom layer
+        // 🟨 White keys (with sound)
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(7, (index) => WhiteKey()),
+          children: List.generate(
+            35,
+            (index) => WhiteKey(noteNumber: index + 1),
+          ),
         ),
-        // Black keys - positioned on top
+
+        // ⬛ Black keys (visual only for now)
         Positioned.fill(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BlackKey(),
-              Spacer(), // No black key between E and F
+              Spacer(), // E-F
               BlackKey(),
               BlackKey(),
-              Spacer(), // No black key between B and C
+              Spacer(), // B-C
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
+              BlackKey(),
+              BlackKey(),
+              Spacer(),
               BlackKey(),
               BlackKey(),
               BlackKey(),
@@ -55,25 +92,38 @@ class PianoKeys extends StatelessWidget {
 }
 
 class WhiteKey extends StatelessWidget {
+  final int noteNumber;
+  const WhiteKey({required this.noteNumber, super.key});
+
+  void playSound() {
+    final player = AudioPlayer();
+    player.play(AssetSource('sounds/note$noteNumber.wav'));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 60,
-      height: 300,
-      margin: const EdgeInsets.symmetric(horizontal: 1),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black),
+    return GestureDetector(
+      onTap: playSound,
+      child: Container(
+        width: 20,
+        height: 300,
+        margin: const EdgeInsets.symmetric(horizontal: 1),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.black),
+        ),
       ),
     );
   }
 }
 
 class BlackKey extends StatelessWidget {
+  const BlackKey({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 30,
+      width: 20,
       height: 180,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(

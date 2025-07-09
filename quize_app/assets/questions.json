@@ -1,0 +1,38 @@
+[
+  {
+    "questionText": "What is the capital of Ethiopia?",
+    "options": ["Addis Ababa", "Nairobi", "Cairo", "Accra"],
+    "correctIndex": 0,
+    "category": "General Quiz"
+  },
+  {
+    "questionText": "What language is used in Flutter?",
+    "options": ["Java", "Dart", "Kotlin", "Swift"],
+    "correctIndex": 1,
+    "category": "Development"
+  },
+  {
+    "questionText": "Which vitamin is produced by sunlight?",
+    "options": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin B12"],
+    "correctIndex": 2,
+    "category": "Health"
+  },
+  {
+    "questionText": "Who was the first president of USA?",
+    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "correctIndex": 1,
+    "category": "History"
+  },
+  {
+    "questionText": "The Earth revolves around the?",
+    "options": ["Sun", "Moon", "Mars", "Venus"],
+    "correctIndex": 0,
+    "category": "Fact"
+  },
+  {
+    "questionText": "What is a common business term for profit?",
+    "options": ["Loss", "Revenue", "Net Income", "Assets"],
+    "correctIndex": 2,
+    "category": "Business"
+  }
+]
