@@ -18,23 +18,34 @@ class WelcomeScreen extends StatelessWidget {
               const Text(
                 'Welcome to Quiz Master!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    MaterialPageRoute(
+                      builder: (_) => const CategoryScreen(),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.deepPurple,
                   padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
-                child: const Text('Get Started', style: TextStyle(fontSize: 18)),
+                child: const Text(
+                  'Get Started',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
             ],
           ),

@@ -116,24 +116,41 @@ class _QuizScreenState extends State<QuizScreen> {
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 24),
+
+            /// 🔁 Answer Choices with Styling
             ...List.generate(question.options.length, (index) {
-              Color color = Colors.deepPurple;
+              bool isCorrect = index == question.correctIndex;
+              bool isSelected = index == selectedAnswer;
+
+              Color backgroundColor = Colors.deepPurple;
+              Color borderColor = Colors.transparent;
+              Color textColor = Colors.white;
+
               if (answered) {
-                if (index == question.correctIndex) {
-                  color = Colors.green;
-                } else if (index == selectedAnswer) {
-                  color = Colors.red;
+                if (isCorrect) {
+                  backgroundColor = Colors.green;
+                  borderColor = Colors.green.shade700;
+                } else if (isSelected && !isCorrect) {
+                  backgroundColor = Colors.red;
+                  borderColor = Colors.red.shade700;
                 } else {
-                  color = Colors.grey.shade300;
+                  backgroundColor = Colors.grey.shade300;
+                  textColor = Colors.black87;
                 }
               }
+
               return Container(
                 margin: const EdgeInsets.only(bottom: 12),
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: color,
+                    backgroundColor: backgroundColor,
+                    foregroundColor: textColor,
+                    side: BorderSide(color: borderColor, width: 2),
                     padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   onPressed: answered ? null : () => checkAnswer(index),
                   child: Text(
@@ -143,14 +160,19 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
               );
             }),
+
             const Spacer(),
+
+            /// ➡️ Next or Finish Button
             if (answered)
               Center(
                 child: ElevatedButton(
                   onPressed: nextQuestion,
-                  child: Text(currentIndex == questions.length - 1 ? 'Finish' : 'Next'),
+                  child: Text(
+                    currentIndex == questions.length - 1 ? 'Finish' : 'Next',
+                  ),
                 ),
-              )
+              ),
           ],
         ),
       ),

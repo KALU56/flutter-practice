@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/favorites_provider.dart';
 import 'screens/welcome_screen.dart';
 
-void main() => runApp(const QuizApp());
+void main() {
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoritesProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
+}
 
-class QuizApp extends StatelessWidget {
-  const QuizApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Quiz App',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: WelcomeScreen(),
+      title: 'Quiz Master',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      home: const WelcomeScreen(),
     );
   }
 }
