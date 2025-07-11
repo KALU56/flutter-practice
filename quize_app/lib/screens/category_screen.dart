@@ -65,7 +65,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ),
 
-          // 📚 Category Grid
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -99,7 +98,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       ),
                       child: Stack(
                         children: [
-                          // 📦 Icon & Title
+                       
                           Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
